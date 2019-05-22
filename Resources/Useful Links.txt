@@ -1,0 +1,4 @@
+https://www.codeproject.com/Articles/1068043/Creating-Custom-Windows-Forms-in-Csharp-using-Pane
+https://www.oracle.com/technetwork/topics/dotnet/latest-news/dotnetquickstart-4119449.html
+http://www.codedigest.com/quick-start/17/what-is-dapper-how-to-use-dapper-in-aspnet-mvc
+https://www.c-sharpcorner.com/article/calling-oracle-stored-procedures-from-microsoft-net/
