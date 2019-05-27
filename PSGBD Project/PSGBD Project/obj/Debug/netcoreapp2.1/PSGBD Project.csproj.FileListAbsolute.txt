@@ -1,0 +1,55 @@
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.deps.json
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.runtimeconfig.json
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.runtimeconfig.dev.json
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.pdb
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.Views.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\PSGBD Project.Views.pdb
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.csprojAssemblyReference.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.csproj.CoreCompileInputs.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.RazorAssemblyInfo.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.RazorAssemblyInfo.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.AssemblyInfoInputs.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.AssemblyInfo.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.TagHelpers.input.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.TagHelpers.output.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.RazorCoreGenerate.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.RazorTargetAssemblyInfo.cache
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.RazorTargetAssemblyInfo.cs
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.Views.pdb
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.pdb
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\obj\Debug\netcoreapp2.1\PSGBD Project.csproj.CopyComplete
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Design.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Windows.Forms.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Drawing.Design.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Data.OracleClient.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Runtime.Serialization.Formatters.Soap.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\Accessibility.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Web.RegularExpressions.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Deployment.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.EnterpriseServices.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.DirectoryServices.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Runtime.Remoting.dll
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Design.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Windows.Forms.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Drawing.Design.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Data.OracleClient.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Runtime.Serialization.Formatters.Soap.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\Accessibility.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Web.RegularExpressions.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Deployment.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.EnterpriseServices.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.DirectoryServices.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.Runtime.Remoting.xml
+C:\Users\andra\source\repos\PSGBD Project\PSGBD Project\bin\Debug\netcoreapp2.1\System.EnterpriseServices.Wrapper.dll
