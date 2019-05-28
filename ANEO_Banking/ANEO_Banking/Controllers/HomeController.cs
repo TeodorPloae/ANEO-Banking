@@ -34,6 +34,15 @@ namespace ANEO_Banking.Controllers
         {
             if (Session["UserCardNumber"] != null)
             {
+                string cardNo = Session["UserCardNumber"].ToString();
+                decimal id_cust = _db.CUSTOMER_CREDIT_CARDS.Where(c => c.CARD_NUMBER == cardNo).FirstOrDefault().ID;
+                string prenume = _db.CUSTOMERS.Where(i => i.ID == id_cust).FirstOrDefault().PRENUME;
+
+
+                string account_number = _db.CUSTOMER_CREDIT_CARDS.Where(c => c.CARD_NUMBER == cardNo).FirstOrDefault().ACCOUNT_NUMBER;
+                decimal balance = (decimal)_db.ACCOUNTS.Where(a => a.ACCOUNT_NUMBER == account_number).FirstOrDefault().BALANCE;
+
+                ViewBag.Message = "Hello " + prenume + "! Balance: " + balance.ToString();
                 return View();
             }
             else
@@ -55,13 +64,16 @@ namespace ANEO_Banking.Controllers
         {
 
             string cardNo = Session["UserCardNumber"].ToString();
+            
             decimal id_cust = _db.CUSTOMER_CREDIT_CARDS.Where(c => c.CARD_NUMBER == cardNo).FirstOrDefault().ID;
             string prenume = _db.CUSTOMERS.Where(i => i.ID == id_cust).FirstOrDefault().PRENUME;
-            ViewBag.Message = "Hello " + prenume;
+            
 
             string account_number = _db.CUSTOMER_CREDIT_CARDS.Where(c => c.CARD_NUMBER == cardNo).FirstOrDefault().ACCOUNT_NUMBER;
+            //decimal balance = (decimal) _db.ACCOUNTS.Where(a => a.ACCOUNT_NUMBER == account_number).FirstOrDefault().BALANCE;
+            //ViewBag.Message = "Hello " + prenume + "! Balance: " + balance.ToString();
             List<decimal> ids = _db.TRANSACTIONS.Where(a => a.ACC_NO_CUSTOMER1 == account_number || a.ACC_NO_CUSTOMER2 == account_number).Select(a => a.ID).ToList();
-            List<ANEO_Banking.Models.TRANSACTIONS_HISTORY> transaction_details = _db.TRANSACTIONS_HISTORY.Where(i => ids.Contains(i.ID_TRANSACTION)).Select(x => x).ToList();
+            List<ANEO_Banking.Models.TRANSACTIONS_HISTORY> transaction_details = _db.TRANSACTIONS_HISTORY.Where(i => ids.Contains(i.ID_TRANSACTION)).OrderByDescending(i => i.CREATED_AT) .Select(x => x).ToList();
             ViewBag.Data = transaction_details;
 
             return View();
