@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNTS">
+          <Key>
+            <PropertyRef Name="ACCOUNT_NUMBER" />
+          </Key>
+          <Property Name="ACCOUNT_NUMBER" Type="varchar2" MaxLength="24" Nullable="false" />
+          <Property Name="BALANCE" Type="float" Precision="126" Scale="0" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <EntityType Name="CREDIT_CARDS">
+          <Key>
+            <PropertyRef Name="CARD_NUMBER" />
+          </Key>
+          <Property Name="CARD_NUMBER" Type="varchar2" MaxLength="16" Nullable="false" />
+          <Property Name="EXPIRE_DATE" Type="date" />
+          <Property Name="CVV" Type="varchar2" MaxLength="3" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_CREDIT_CARDS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CUSTOMER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CARD_NUMBER" Type="varchar2" MaxLength="16" Nullable="false" />
+          <Property Name="ACCOUNT_NUMBER" Type="varchar2" MaxLength="24" Nullable="false" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUME" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="PRENUME" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <EntityType Name="OPTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACCOUNT_NUMBER" Type="varchar2" MaxLength="24" Nullable="false" />
+          <Property Name="ID_PACKAGE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <EntityType Name="PACKS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TYPE" Type="varchar2" MaxLength="15" />
+          <Property Name="COST" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <EntityType Name="TRANSACTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACC_NO_CUSTOMER1" Type="varchar2" MaxLength="24" Nullable="false" />
+          <Property Name="ACC_NO_CUSTOMER2" Type="varchar2" MaxLength="24" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANSACTIONS_HISTORY">
+          <Key>
+            <PropertyRef Name="ID_TRANSACTION" />
+          </Key>
+          <Property Name="ID_TRANSACTION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREATED_AT" Type="date" />
+          <Property Name="UPDATED_AT" Type="date" />
+        </EntityType>
+        <Association Name="FK_CUST_CRED_CARDS_ACC_NUM">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="CUSTOMER_CREDIT_CARDS" Type="Self.CUSTOMER_CREDIT_CARDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="CUSTOMER_CREDIT_CARDS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_CRED_CARDS_CARD_NUM">
+          <End Role="CREDIT_CARDS" Type="Self.CREDIT_CARDS" Multiplicity="1" />
+          <End Role="CUSTOMER_CREDIT_CARDS" Type="Self.CUSTOMER_CREDIT_CARDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_CARDS">
+              <PropertyRef Name="CARD_NUMBER" />
+            </Principal>
+            <Dependent Role="CUSTOMER_CREDIT_CARDS">
+              <PropertyRef Name="CARD_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_CRED_CARDS_ID_CUST">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="CUSTOMER_CREDIT_CARDS" Type="Self.CUSTOMER_CREDIT_CARDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_CREDIT_CARDS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPTIONS_ACCOUNT_NUMBER">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="OPTIONS" Type="Self.OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="OPTIONS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPTIONS_ID_PACKAGE">
+          <End Role="PACKS" Type="Self.PACKS" Multiplicity="1" />
+          <End Role="OPTIONS" Type="Self.OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACKS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPTIONS">
+              <PropertyRef Name="ID_PACKAGE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANS_ACC_NO_CUS1">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS">
+              <PropertyRef Name="ACC_NO_CUSTOMER1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANS_ACC_NO_CUS2">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS">
+              <PropertyRef Name="ACC_NO_CUSTOMER2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANS_HISTORY_ID_TRANS">
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="1" />
+          <End Role="TRANSACTIONS_HISTORY" Type="Self.TRANSACTIONS_HISTORY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS_HISTORY">
+              <PropertyRef Name="ID_TRANSACTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ACCOUNTS" EntityType="Self.ACCOUNTS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="CREDIT_CARDS" EntityType="Self.CREDIT_CARDS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER_CREDIT_CARDS" EntityType="Self.CUSTOMER_CREDIT_CARDS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="OPTIONS" EntityType="Self.OPTIONS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="PACKS" EntityType="Self.PACKS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="TRANSACTIONS" EntityType="Self.TRANSACTIONS" Schema="PROJECT" store:Type="Tables" />
+          <EntitySet Name="TRANSACTIONS_HISTORY" EntityType="Self.TRANSACTIONS_HISTORY" Schema="PROJECT" store:Type="Tables" />
+          <AssociationSet Name="FK_CUST_CRED_CARDS_ACC_NUM" Association="Self.FK_CUST_CRED_CARDS_ACC_NUM">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="CUSTOMER_CREDIT_CARDS" EntitySet="CUSTOMER_CREDIT_CARDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_CRED_CARDS_CARD_NUM" Association="Self.FK_CUST_CRED_CARDS_CARD_NUM">
+            <End Role="CREDIT_CARDS" EntitySet="CREDIT_CARDS" />
+            <End Role="CUSTOMER_CREDIT_CARDS" EntitySet="CUSTOMER_CREDIT_CARDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_CRED_CARDS_ID_CUST" Association="Self.FK_CUST_CRED_CARDS_ID_CUST">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="CUSTOMER_CREDIT_CARDS" EntitySet="CUSTOMER_CREDIT_CARDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPTIONS_ACCOUNT_NUMBER" Association="Self.FK_OPTIONS_ACCOUNT_NUMBER">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="OPTIONS" EntitySet="OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPTIONS_ID_PACKAGE" Association="Self.FK_OPTIONS_ID_PACKAGE">
+            <End Role="PACKS" EntitySet="PACKS" />
+            <End Role="OPTIONS" EntitySet="OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANS_ACC_NO_CUS1" Association="Self.FK_TRANS_ACC_NO_CUS1">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANS_ACC_NO_CUS2" Association="Self.FK_TRANS_ACC_NO_CUS2">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANS_HISTORY_ID_TRANS" Association="Self.FK_TRANS_HISTORY_ID_TRANS">
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+            <End Role="TRANSACTIONS_HISTORY" EntitySet="TRANSACTIONS_HISTORY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCOUNTS">
+          <Key>
+            <PropertyRef Name="ACCOUNT_NUMBER" />
+          </Key>
+          <Property Name="ACCOUNT_NUMBER" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BALANCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="CUSTOMER_CREDIT_CARDS" Relationship="Self.FK_CUST_CRED_CARDS_ACC_NUM" FromRole="ACCOUNTS" ToRole="CUSTOMER_CREDIT_CARDS" />
+          <NavigationProperty Name="OPTIONS" Relationship="Self.FK_OPTIONS_ACCOUNT_NUMBER" FromRole="ACCOUNTS" ToRole="OPTIONS" />
+          <NavigationProperty Name="TRANSACTIONS" Relationship="Self.FK_TRANS_ACC_NO_CUS1" FromRole="ACCOUNTS" ToRole="TRANSACTIONS" />
+          <NavigationProperty Name="TRANSACTIONS1" Relationship="Self.FK_TRANS_ACC_NO_CUS2" FromRole="ACCOUNTS" ToRole="TRANSACTIONS" />
+        </EntityType>
+        <EntityType Name="CREDIT_CARDS">
+          <Key>
+            <PropertyRef Name="CARD_NUMBER" />
+          </Key>
+          <Property Name="CARD_NUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXPIRE_DATE" Type="DateTime" />
+          <Property Name="CVV" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="CUSTOMER_CREDIT_CARDS" Relationship="Self.FK_CUST_CRED_CARDS_CARD_NUM" FromRole="CREDIT_CARDS" ToRole="CUSTOMER_CREDIT_CARDS" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_CREDIT_CARDS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CUSTOMER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CARD_NUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACCOUNT_NUMBER" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="ACCOUNTS" Relationship="Self.FK_CUST_CRED_CARDS_ACC_NUM" FromRole="CUSTOMER_CREDIT_CARDS" ToRole="ACCOUNTS" />
+          <NavigationProperty Name="CREDIT_CARDS" Relationship="Self.FK_CUST_CRED_CARDS_CARD_NUM" FromRole="CUSTOMER_CREDIT_CARDS" ToRole="CREDIT_CARDS" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_CUST_CRED_CARDS_ID_CUST" FromRole="CUSTOMER_CREDIT_CARDS" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRENUME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="CUSTOMER_CREDIT_CARDS" Relationship="Self.FK_CUST_CRED_CARDS_ID_CUST" FromRole="CUSTOMERS" ToRole="CUSTOMER_CREDIT_CARDS" />
+        </EntityType>
+        <EntityType Name="OPTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACCOUNT_NUMBER" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PACKAGE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="ACCOUNTS" Relationship="Self.FK_OPTIONS_ACCOUNT_NUMBER" FromRole="OPTIONS" ToRole="ACCOUNTS" />
+          <NavigationProperty Name="PACKS" Relationship="Self.FK_OPTIONS_ID_PACKAGE" FromRole="OPTIONS" ToRole="PACKS" />
+        </EntityType>
+        <EntityType Name="PACKS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="COST" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="OPTIONS" Relationship="Self.FK_OPTIONS_ID_PACKAGE" FromRole="PACKS" ToRole="OPTIONS" />
+        </EntityType>
+        <EntityType Name="TRANSACTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACC_NO_CUSTOMER1" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACC_NO_CUSTOMER2" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ACCOUNTS" Relationship="Self.FK_TRANS_ACC_NO_CUS1" FromRole="TRANSACTIONS" ToRole="ACCOUNTS" />
+          <NavigationProperty Name="ACCOUNTS1" Relationship="Self.FK_TRANS_ACC_NO_CUS2" FromRole="TRANSACTIONS" ToRole="ACCOUNTS" />
+          <NavigationProperty Name="TRANSACTIONS_HISTORY" Relationship="Self.FK_TRANS_HISTORY_ID_TRANS" FromRole="TRANSACTIONS" ToRole="TRANSACTIONS_HISTORY" />
+        </EntityType>
+        <EntityType Name="TRANSACTIONS_HISTORY">
+          <Key>
+            <PropertyRef Name="ID_TRANSACTION" />
+          </Key>
+          <Property Name="ID_TRANSACTION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREATED_AT" Type="DateTime" />
+          <Property Name="UPDATED_AT" Type="DateTime" />
+          <NavigationProperty Name="TRANSACTIONS" Relationship="Self.FK_TRANS_HISTORY_ID_TRANS" FromRole="TRANSACTIONS_HISTORY" ToRole="TRANSACTIONS" />
+        </EntityType>
+        <Association Name="FK_CUST_CRED_CARDS_ACC_NUM">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="CUSTOMER_CREDIT_CARDS" Type="Self.CUSTOMER_CREDIT_CARDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="CUSTOMER_CREDIT_CARDS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPTIONS_ACCOUNT_NUMBER">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="OPTIONS" Type="Self.OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="OPTIONS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANS_ACC_NO_CUS1">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS">
+              <PropertyRef Name="ACC_NO_CUSTOMER1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANS_ACC_NO_CUS2">
+          <End Role="ACCOUNTS" Type="Self.ACCOUNTS" Multiplicity="1" />
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTS">
+              <PropertyRef Name="ACCOUNT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS">
+              <PropertyRef Name="ACC_NO_CUSTOMER2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_CRED_CARDS_CARD_NUM">
+          <End Role="CREDIT_CARDS" Type="Self.CREDIT_CARDS" Multiplicity="1" />
+          <End Role="CUSTOMER_CREDIT_CARDS" Type="Self.CUSTOMER_CREDIT_CARDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_CARDS">
+              <PropertyRef Name="CARD_NUMBER" />
+            </Principal>
+            <Dependent Role="CUSTOMER_CREDIT_CARDS">
+              <PropertyRef Name="CARD_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_CRED_CARDS_ID_CUST">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="CUSTOMER_CREDIT_CARDS" Type="Self.CUSTOMER_CREDIT_CARDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_CREDIT_CARDS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPTIONS_ID_PACKAGE">
+          <End Role="PACKS" Type="Self.PACKS" Multiplicity="1" />
+          <End Role="OPTIONS" Type="Self.OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACKS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPTIONS">
+              <PropertyRef Name="ID_PACKAGE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANS_HISTORY_ID_TRANS">
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="1" />
+          <End Role="TRANSACTIONS_HISTORY" Type="Self.TRANSACTIONS_HISTORY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS_HISTORY">
+              <PropertyRef Name="ID_TRANSACTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCOUNTS" EntityType="Self.ACCOUNTS" />
+          <EntitySet Name="CREDIT_CARDS" EntityType="Self.CREDIT_CARDS" />
+          <EntitySet Name="CUSTOMER_CREDIT_CARDS" EntityType="Self.CUSTOMER_CREDIT_CARDS" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" />
+          <EntitySet Name="OPTIONS" EntityType="Self.OPTIONS" />
+          <EntitySet Name="PACKS" EntityType="Self.PACKS" />
+          <EntitySet Name="TRANSACTIONS" EntityType="Self.TRANSACTIONS" />
+          <EntitySet Name="TRANSACTIONS_HISTORY" EntityType="Self.TRANSACTIONS_HISTORY" />
+          <AssociationSet Name="FK_CUST_CRED_CARDS_ACC_NUM" Association="Self.FK_CUST_CRED_CARDS_ACC_NUM">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="CUSTOMER_CREDIT_CARDS" EntitySet="CUSTOMER_CREDIT_CARDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPTIONS_ACCOUNT_NUMBER" Association="Self.FK_OPTIONS_ACCOUNT_NUMBER">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="OPTIONS" EntitySet="OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANS_ACC_NO_CUS1" Association="Self.FK_TRANS_ACC_NO_CUS1">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANS_ACC_NO_CUS2" Association="Self.FK_TRANS_ACC_NO_CUS2">
+            <End Role="ACCOUNTS" EntitySet="ACCOUNTS" />
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_CRED_CARDS_CARD_NUM" Association="Self.FK_CUST_CRED_CARDS_CARD_NUM">
+            <End Role="CREDIT_CARDS" EntitySet="CREDIT_CARDS" />
+            <End Role="CUSTOMER_CREDIT_CARDS" EntitySet="CUSTOMER_CREDIT_CARDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_CRED_CARDS_ID_CUST" Association="Self.FK_CUST_CRED_CARDS_ID_CUST">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="CUSTOMER_CREDIT_CARDS" EntitySet="CUSTOMER_CREDIT_CARDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPTIONS_ID_PACKAGE" Association="Self.FK_OPTIONS_ID_PACKAGE">
+            <End Role="PACKS" EntitySet="PACKS" />
+            <End Role="OPTIONS" EntitySet="OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANS_HISTORY_ID_TRANS" Association="Self.FK_TRANS_HISTORY_ID_TRANS">
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+            <End Role="TRANSACTIONS_HISTORY" EntitySet="TRANSACTIONS_HISTORY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ACCOUNTS">
+            <EntityTypeMapping TypeName="Model.ACCOUNTS">
+              <MappingFragment StoreEntitySet="ACCOUNTS">
+                <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+                <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDIT_CARDS">
+            <EntityTypeMapping TypeName="Model.CREDIT_CARDS">
+              <MappingFragment StoreEntitySet="CREDIT_CARDS">
+                <ScalarProperty Name="CARD_NUMBER" ColumnName="CARD_NUMBER" />
+                <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_CREDIT_CARDS">
+            <EntityTypeMapping TypeName="Model.CUSTOMER_CREDIT_CARDS">
+              <MappingFragment StoreEntitySet="CUSTOMER_CREDIT_CARDS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+                <ScalarProperty Name="CARD_NUMBER" ColumnName="CARD_NUMBER" />
+                <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="Model.CUSTOMERS">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUME" ColumnName="NUME" />
+                <ScalarProperty Name="PRENUME" ColumnName="PRENUME" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPTIONS">
+            <EntityTypeMapping TypeName="Model.OPTIONS">
+              <MappingFragment StoreEntitySet="OPTIONS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+                <ScalarProperty Name="ID_PACKAGE" ColumnName="ID_PACKAGE" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACKS">
+            <EntityTypeMapping TypeName="Model.PACKS">
+              <MappingFragment StoreEntitySet="PACKS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTIONS">
+            <EntityTypeMapping TypeName="Model.TRANSACTIONS">
+              <MappingFragment StoreEntitySet="TRANSACTIONS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACC_NO_CUSTOMER1" ColumnName="ACC_NO_CUSTOMER1" />
+                <ScalarProperty Name="ACC_NO_CUSTOMER2" ColumnName="ACC_NO_CUSTOMER2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTIONS_HISTORY">
+            <EntityTypeMapping TypeName="Model.TRANSACTIONS_HISTORY">
+              <MappingFragment StoreEntitySet="TRANSACTIONS_HISTORY">
+                <ScalarProperty Name="ID_TRANSACTION" ColumnName="ID_TRANSACTION" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

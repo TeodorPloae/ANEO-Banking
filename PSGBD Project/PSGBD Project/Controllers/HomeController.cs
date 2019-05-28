@@ -15,8 +15,11 @@ using System.Data.SqlClient;
 
 namespace PSGBD_Project.Controllers
 {
+    
     public class HomeController : Controller
     {
+        private static string connection = @"//localhost:1521/xe; User ID=PROJECT; Password=PROJECT";
+
         public IActionResult Index()
         {
             return View();
@@ -50,7 +53,8 @@ namespace PSGBD_Project.Controllers
         [HttpGet("TEST")]
         public IActionResult Test()
         {
-            return new JsonResult(new { name = "ceva" });
+            //Method 1 (Hard coded connection string)  
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
         }
     }
 

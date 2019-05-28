@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ACCOUNTS">
+      <EntityTypeMapping TypeName="Model.ACCOUNTS">
+        <MappingFragment StoreEntitySet="ACCOUNTS">
+          <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+          <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREDIT_CARDS">
+      <EntityTypeMapping TypeName="Model.CREDIT_CARDS">
+        <MappingFragment StoreEntitySet="CREDIT_CARDS">
+          <ScalarProperty Name="CARD_NUMBER" ColumnName="CARD_NUMBER" />
+          <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER_CREDIT_CARDS">
+      <EntityTypeMapping TypeName="Model.CUSTOMER_CREDIT_CARDS">
+        <MappingFragment StoreEntitySet="CUSTOMER_CREDIT_CARDS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+          <ScalarProperty Name="CARD_NUMBER" ColumnName="CARD_NUMBER" />
+          <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERS">
+      <EntityTypeMapping TypeName="Model.CUSTOMERS">
+        <MappingFragment StoreEntitySet="CUSTOMERS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NUME" ColumnName="NUME" />
+          <ScalarProperty Name="PRENUME" ColumnName="PRENUME" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OPTIONS">
+      <EntityTypeMapping TypeName="Model.OPTIONS">
+        <MappingFragment StoreEntitySet="OPTIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+          <ScalarProperty Name="ID_PACKAGE" ColumnName="ID_PACKAGE" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PACKS">
+      <EntityTypeMapping TypeName="Model.PACKS">
+        <MappingFragment StoreEntitySet="PACKS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACTIONS">
+      <EntityTypeMapping TypeName="Model.TRANSACTIONS">
+        <MappingFragment StoreEntitySet="TRANSACTIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACC_NO_CUSTOMER1" ColumnName="ACC_NO_CUSTOMER1" />
+          <ScalarProperty Name="ACC_NO_CUSTOMER2" ColumnName="ACC_NO_CUSTOMER2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACTIONS_HISTORY">
+      <EntityTypeMapping TypeName="Model.TRANSACTIONS_HISTORY">
+        <MappingFragment StoreEntitySet="TRANSACTIONS_HISTORY">
+          <ScalarProperty Name="ID_TRANSACTION" ColumnName="ID_TRANSACTION" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

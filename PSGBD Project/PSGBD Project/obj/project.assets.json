@@ -12088,11 +12088,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andra\\source\\repos\\PSGBD Project\\PSGBD Project\\PSGBD Project.csproj",
+      "projectUniqueName": "C:\\Users\\andra\\Documents\\GitHub\\ANEO-Banking\\PSGBD Project\\PSGBD Project\\PSGBD Project.csproj",
       "projectName": "PSGBD Project",
-      "projectPath": "C:\\Users\\andra\\source\\repos\\PSGBD Project\\PSGBD Project\\PSGBD Project.csproj",
+      "projectPath": "C:\\Users\\andra\\Documents\\GitHub\\ANEO-Banking\\PSGBD Project\\PSGBD Project\\PSGBD Project.csproj",
       "packagesPath": "C:\\Users\\andra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andra\\source\\repos\\PSGBD Project\\PSGBD Project\\obj\\",
+      "outputPath": "C:\\Users\\andra\\Documents\\GitHub\\ANEO-Banking\\PSGBD Project\\PSGBD Project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

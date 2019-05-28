@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f09227bea404ce69850963225f390be" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ACCOUNTS" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CREDIT_CARDS" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CUSTOMER_CREDIT_CARDS" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CUSTOMERS" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OPTIONS" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PACKS" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRANSACTIONS" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRANSACTIONS_HISTORY" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_CUST_CRED_CARDS_ACC_NUM" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OPTIONS_ACCOUNT_NUMBER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TRANS_ACC_NO_CUS1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TRANS_ACC_NO_CUS2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CUST_CRED_CARDS_CARD_NUM" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CUST_CRED_CARDS_ID_CUST" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OPTIONS_ID_PACKAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TRANS_HISTORY_ID_TRANS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
