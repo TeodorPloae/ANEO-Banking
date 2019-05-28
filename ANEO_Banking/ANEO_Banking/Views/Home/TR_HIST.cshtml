@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Transaction History";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table id="myTable" class="table" cellspacing="0">
+    <thead>
+        <tr>
+
+            <th> Amount</th>
+            <th> Transaction Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ANEO_Banking.Models.TRANSACTIONS_HISTORY item in ViewBag.Data )
+        {
+        <tr>
+
+            <td>@item.AMOUNT</td>
+            <td>@item.CREATED_AT</td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+

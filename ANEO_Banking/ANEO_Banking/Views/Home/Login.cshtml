@@ -1,0 +1,49 @@
+﻿@model ANEO_Banking.Models.CREDIT_CARDS
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Login using your Credit Card Number and CVV</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.CARD_NUMBER)</td>
+                <td>@Html.TextBoxFor(a => a.CARD_NUMBER)</td>
+                <td>@Html.ValidationMessageFor(a => a.CARD_NUMBER)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(a => a.CVV)
+                </td>
+                <td>
+                    @Html.PasswordFor(a => a.CVV)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.CVV)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}
+
+
+
